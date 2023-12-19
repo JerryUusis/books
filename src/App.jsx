@@ -7,6 +7,7 @@ import Books from './routes/Books';
 import Book from './routes/Book';
 import AddBook from './routes/AddBook';
 
+// Set primary and secondary colors for the palette/theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -18,7 +19,9 @@ const theme = createTheme({
   },
 });
 
+// Main app
 function App() {
+  // Create paths navigating on the page
   const router = createBrowserRouter([
     {
       path: '/',
