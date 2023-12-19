@@ -17,10 +17,11 @@ function Books() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Fetches the books using getBooks if useState's initial state is empty after loading the page first
   useEffect(() => {
     if (books.length === 0) {
       getBooks();
-    }
+   }
   }, []);
 
   // TODO: Replace axios with useAxios hook
