@@ -13,6 +13,7 @@ import useAxios from '../services/useAxios';
 import { bookGenres } from '../genres';
 import { Stack, Typography } from '@mui/material';
 
+// Custom hook for adding a new book object
 function AddBook() {
   const { alert, post } = useAxios('http://localhost:3001');
   const [rateValue, setRateValue] = useState(3);
@@ -26,6 +27,7 @@ function AddBook() {
     stars: null,
   });
 
+  // Sets selected genres and separates them with a comma
   const genreChangeHandler = (event) => {
     const { value } = event.target;
     setBook({
@@ -34,6 +36,7 @@ function AddBook() {
     });
   };
 
+  // Sets the rating of a new book object 
   const rateChangeHandler = (event) => {
     const { value } = event.target;
     setBook({
@@ -42,6 +45,7 @@ function AddBook() {
     });
   };
 
+  // Sets the boolean value for the new book if it's read or not
   const addBookHandler = (e) => {
     const { name, value, checked, type } = e.target;
     if (type === 'checkbox' && name === 'completed') {
@@ -51,9 +55,12 @@ function AddBook() {
     }
   };
 
+  // Use post method from custom useAxios hook to submit form data / add new book
   function postHandler() {
     post('books', book);
   }
+
+  // create 2 functions for deleting and updating
 
   return (
     <form onChange={addBookHandler} onSubmit={postHandler}>
