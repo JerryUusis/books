@@ -6,6 +6,8 @@ import Root from './routes/Root';
 import Books from './routes/Books';
 import Book from './routes/Book';
 import AddBook from './routes/AddBook';
+import { useState } from 'react';
+
 
 // Set primary and secondary colors for the palette/theme
 const theme = createTheme({
@@ -21,13 +23,19 @@ const theme = createTheme({
 
 // Main app
 function App() {
+  const [search, setSearch] = useState("");
+
+  const handleInput = (event) => {
+    setSearch(event.target.value)
+
+}
   // Create paths navigating on the page
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Root />,
+      element: <Root handleInput={handleInput}/>,
       children: [
-        { path: '/', element: <Books /> },
+        { path: '/', element: <Books search={search}/> },
         { path: '/book', element: <Book /> },
         { path: '/addnew', element: <AddBook /> },
       ],

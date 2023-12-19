@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Button, Box, AppBar, Toolbar, Typography } from '@mui/material';
+import { Button, Box, AppBar, Toolbar, Typography, TextField } from '@mui/material';
 
-function Header() {
+function Header({ handleInput }) {
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -21,7 +22,9 @@ function Header() {
                             Books
                         </Typography>
                     </Typography>
-
+                    <TextField
+                        onChange={handleInput}
+                        variant='outlined' />
                     <Button color="inherit" variant="text" component={Link} to="/">
                         Home
                     </Button>
