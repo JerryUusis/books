@@ -15,7 +15,7 @@ import { Stack, Typography } from '@mui/material';
 
 // Custom hook for adding a new book object
 function AddBook() {
-  const { alert, post } = useAxios('http://localhost:3001');
+  const { alert, post } = useAxios('http://localhost:3000');
   const [rateValue, setRateValue] = useState(3);
   const [book, setBook] = useState({
     author: '',
@@ -56,7 +56,8 @@ function AddBook() {
   };
 
   // Use post method from custom useAxios hook to submit form data / add new book
-  function postHandler() {
+  function postHandler(e) {
+    e.preventDefault();
     post('books', book);
   }
 
