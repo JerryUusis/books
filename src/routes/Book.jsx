@@ -35,12 +35,12 @@ function Book({ data, loading }) {
                 display: "flex",
                 flexDirection: "column",
                 width: "15%",
-                minWidth: 200,
+                minWidth: 400,
               }}
               key={book.name}
             >
               <CardMedia
-                sx={{ height: 250 }}
+                sx={{ height: 350 }}
                 image={
                   book.img
                     ? book.img
@@ -58,6 +58,23 @@ function Book({ data, loading }) {
                 <Typography variant="subtitle1" gutterBottom>
                   {book.author}
                 </Typography>
+                <Typography variant="subtitle2" gutterBottom>
+                  Completed {book.completed ? "✅" : "❌"}
+                </Typography>
+                {book.start && (
+                  <>
+                    <div>
+                      <Typography variant="subtitle3" gutterBottom>
+                        Starting day {book.start}
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography variant="subtitle3" gutterBottom>
+                        Ending day {book.end}
+                      </Typography>
+                    </div>
+                  </>
+                )}
               </Box>
               <CardActions
                 sx={{
